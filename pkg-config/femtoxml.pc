@@ -1,0 +1,13 @@
+# femtoxml pkg-config file
+
+prefix=${pcfiledir}/../..
+libdir=${prefix}/lib
+includedir=${prefix}/include/femtoxml
+
+Name: FemtoXML
+Description: FemtoXML is an easy to use XML library
+Version: 0.1.0
+Requires:
+Conflicts:
+Libs: -L${libdir} -lfemtoxml
+Cflags: -I${includedir}

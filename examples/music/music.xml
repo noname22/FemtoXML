@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	simple example file for FemtoXML, an easy to use xml-parser
+	written in C with bindings for C++
+
+	See http://nurd.se/~noname/femtoxml for more information
+-->
+
+<collection description="Metal">
+	<album>
+		<artist>Opeth</artist>
+		<title>Blackwater Park (Special Edition)</title>
+		<year>2002</year>
+		<track length="10:24" number="01">The Leper Affinity</track>
+		<track length="9:16" number="02">Bleak</track>
+		<track length="6:02" number="03">Harvest</track>
+		<track length="10:54" number="04">The Drapery Falls</track>
+		<track length="7:54" number="05">Dirge For November</track>
+		<track length="8:45" number="06">The Funeral Portrait</track>
+		<track length="1:52" number="07">Patterns in the Ivy</track>
+		<track length="12:08" number="08">Blackwater Park</track>
+		<track length="4:34" number="09">Still Day Beneath the Sun</track>
+		<track length="4:12" number="10">Patterns in the Ivy II</track>
+	</album>
+	<album>
+		<artist>X-Japan</artist>
+		<year>1993</year>
+		<title>Art of Life</title>
+		<track length="29:00" number="01">Art of Life</track>
+	</album>
+	<album>
+		<artist>Ayreon</artist>
+		<year>2004</year>
+		<title>The Human Equation</title>
+		<track length="1:33" number="01">Day One: Vigil</track>
+		<track length="8:42" number="02">Day Two: Isolation</track>
+		<track length="4:58" number="03">Day Three: Pain</track>
+		<track length="5:37" number="04">Day Four: Mystery</track>
+		<track length="7:09" number="05">Day Five: Voices</track>
+		<track length="5:05" number="06">Day Six: Childhood</track>
+		<track length="2:47" number="07">Day Seven: Hope</track>
+		<track length="4:22" number="08">Day Eight: School</track>
+		<track length="2:15" number="09">Day Nine: Playground</track>
+		<track length="3:57" number="10">Day Ten: Memories</track>
+		<track length="4:18" number="11">Day Eleven: Love</track>
+		<track length="8:59" number="12">Day Twelve: Trauma</track>
+		<track length="4:47" number="13">Day Thirteen: Sign</track>
+		<track length="4:42" number="14">Day Fourteen: Pride</track>
+		<track length="5:24" number="15">Day Fifteen: Betrayal</track>
+		<track length="4:46" number="16">Day Sixteen: Loser</track>
+		<track length="5:42" number="17">Day Seventeen: Accident</track>
+		<track length="4:31" number="18">Day Eighteen: Realization</track>
+		<track length="4:42" number="19">Day Nineteen: Disclosure</track>
+		<track length="7:03" number="20">Day Twenty: Confrontation</track>
+	</album>
+</collection>
+
+<collection description="Happy Hardcore">
+	<album>
+		<artist>Blümchen</artist>
+		<year>1997</year>
+		<title>Verliebt...</title>
+		<track length="3:42" number="01">Nur Geträumt</track>
+		<track length="5:49" number="02">Schmetterlinge</track>
+		<track length="5:20" number="03">Du Bist Die Insel</track>
+		<track length="4:58" number="04">Er Liebt Mich</track>
+		<track length="5:16" number="05">Übermorgenland</track>
+		<track length="4:10" number="06">Gib Mir Noch Zeit</track>
+		<track length="5:31" number="07">Eisblumen</track>
+		<track length="5:31" number="08">Reiser Durch Die Zeit</track>
+		<track length="4:09" number="09">Achterbahn</track>
+		<track length="5:16" number="10">Engel Der Nacht</track>
+		<track length="4:33" number="11">S.O.S. - Herz In Not</track>
+		<track length="5:08" number="12">Verückte Jungs</track>
+	</album>	
+</collection>

@@ -1,0 +1,5 @@
+# This is a project file for the spank build system, see http://nurd.se/~noname/spank for more information
+# There is also a normal makefile in this directory if you don't like/use spank (just type "make").
+target		create
+cflags		ggdb Iinclude ansi pedantic Wall Ifemtoxml I/usr/include/femtoxml I/usr/local/include/femtoxml
+ldflags		lfemtoxml

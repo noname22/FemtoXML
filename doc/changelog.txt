@@ -1,0 +1,12 @@
+FemtoXML Change Log
+
+0.96 (05/01/2008)
+	* Corrected documentation
+
+0.95 (02/09/2008)
+	* Added support for loading from a memory buffer
+	* Major parsing performance increase
+	* Fixed parsing bugs
+
+0.9 (02/08/2008)
+	* Initial public release
