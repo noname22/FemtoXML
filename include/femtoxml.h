@@ -25,8 +25,8 @@
 #endif
 
 #define FXML_VERSION_MAJOR	0
-#define	FXML_VERISON_MINOR	95
-#define FXML_VERSION_STRING	"FemtoXML 0.95"
+#define	FXML_VERISON_MINOR	97
+#define FXML_VERSION_STRING	"FemtoXML 0.97"
 
 #ifdef __cplusplus
 extern "C" {
@@ -138,6 +138,17 @@ fxml_element* fxml_addDoctype(fxml_element* doctype, const char* name);
 /* Extract data */
 fxml_element* fxml_get(fxml_element* root, const char* val, int type, int index);
 int fxml_count(fxml_element* element, const char* val, int type);
+
+/* Some shorthands */
+#define fxml_getFirst(__element, __name) fxml_get(__element, __name, FXML_TYPE_ANY, 0)
+
+	/* Any value */
+#define fxml_value(__element) (fxml_get(__element, "", FXML_TYPE_ANY, 0)->val)
+#define fxml_valueOf(__element, __subelement_name) fxml_value(fxml_getFirst(__element, __subelement_name))
+
+	/* Text */
+#define fxml_textValue(__element) (fxml_get(__element, "", FXML_TYPE_TEXT, 0)->val)
+#define fxml_textOf(__element, __subelement_name) fxml_textValue(fxml_getFirst(__element, __subelement_name))
 
 /* Set data */
 void fxml_setVal(fxml_element* element, const char* val);
