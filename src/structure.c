@@ -37,7 +37,7 @@ fxml_element* fxml_errorElement()
 	return error;	
 }
 
-/* Sets the given element to it's own "next"-element if it has one
+/* Sets the given element to its own "next"-element if it has one
  * Returns true if there is a next element, and false if not.
  * Used to loop trough an element-structure "vertically" */
 int fxml_getNextElement(fxml_element** element)
