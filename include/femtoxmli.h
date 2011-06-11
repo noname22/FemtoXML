@@ -25,11 +25,11 @@
 #include "femtoxml.h"
 
 /* Limits */
-#define FXML_MAXSTRLEN 0xffff			/* Maximum length of a string in FemtoXML (tagnames, etc.) */
+#define FXML_MAXSTRLEN 0xffffff			/* Maximum length of a string in FemtoXML (tagnames, etc.) */
 #define FXML_MAXDEPTH 0xffff			/* Maximum document depth (ie. <tag depth="1"><tag depth="2">At depth 3</tag></tag> ) */
 #define FXML_MAXBREADTH 0xffff			/* Maximum document breadth (ie. <tag breadth="1"></tag><tag breadth="2"></tag>At breadth 3*/
 #define FXML_MAXATTRIBS 0xffff			/* Maximum number of attributes accompanying an element (ie. <tag attr="1" attr="2">) */
-#define FXML_MAX_MESSAGELEN 0xffff		/* Maximum length of messages (error messages etc.) */
+#define FXML_MAX_MESSAGELEN 0xffffff		/* Maximum length of messages (error messages etc.) */
 
 /* Constants */
 #define FXML_ERROR -1
