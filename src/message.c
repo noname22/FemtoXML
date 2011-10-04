@@ -80,14 +80,12 @@ void fxml_sendMsgStr(int type, const char* typeName, const char* msg)
 	}
 }
 
-/* Takes pintf-style arguments, converts them to a string and sends it to the message callback using fxml_sendMsgStr */
+/* Takes printf-style arguments, converts them to a string and sends it to the message callback using fxml_sendMsgStr */
 void fxml_ePrint(int type, const char *format, ...)
 {
 	va_list fmtargs;
-	char buffer[FXML_MAX_MESSAGELEN];
+	char* buffer = calloc(1, FXML_MAX_MESSAGELEN);
 	
-	buffer[FXML_MAX_MESSAGELEN - 1] = '\0';
-
 	va_start(fmtargs, format);
 	
 	#if __STDC_VERSION__ == 199901L | HAVE_VSNPRINTF
@@ -103,5 +101,7 @@ void fxml_ePrint(int type, const char *format, ...)
 	va_end(fmtargs);
 	
 	fxml_sendMsgStr(type, fxml_getErrorLevel(type), buffer);
+
+	free(buffer);
 }
 

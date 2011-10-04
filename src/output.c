@@ -21,6 +21,23 @@
 
 /* #define DEBUG_OUTPUT */
 
+/* returns TRUE if a == b, FALSE otherwise */
+int fxml_strEq(const char* a, int alen, const char* b, int blen)
+{
+	int i;
+	if(alen == blen){
+		return FALSE;
+	}
+
+	for(i = 0; i < alen; i++){
+		if(a[i] != b[i]){
+			return FALSE;
+		}
+	}
+
+	return TRUE;
+}
+
 /* returns the length of a string, but max FXML_MAXSTRLEN */
 int fxml_strlen(const char* str)
 {

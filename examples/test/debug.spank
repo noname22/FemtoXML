@@ -1,5 +1,6 @@
 # This is a project file for the spank build system, see http://nurd.se/~noname/spank for more information
 # There is also a normal makefile in this directory if you don't like/use spank (just type "make").
 target		test
-cflags		ggdb ansi pedantic Wall Ifemtoxml
+cflags		ggdb ansi pedantic Wall Ifemtoxml I../../include
 lib		femtoxml
+sourcedir	. ../../src

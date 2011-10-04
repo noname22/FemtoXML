@@ -39,6 +39,7 @@ enum{
 	FXML_PARSE_ERROR
 };
 
+
 /* Sets the value in a given fxml_element from a given buffer */
 void fxml_fsetVal(fxml_element* element, fxml_vFile* buffer, int len)
 {
@@ -58,6 +59,7 @@ void fxml_fsetVal(fxml_element* element, fxml_vFile* buffer, int len)
 	
 	element->val[len] = '\0';
 }
+
 /* Jumps to the next word in a buffer */
 /* TODO: May have UTF-8 compatibility issues.
  * A second, third or fourth byte in a UTF-8 encoded character may have a value of 
@@ -376,7 +378,7 @@ int fxml_isEndOfBuffer(fxml_vFile* buffer)
 }
 
 /* Compares two strings. Case INsensitive. TRUE if they're the same. TODO UTF-8 weirdness */
-int fxml_strncmp(unsigned int n, char* a, char* b)
+int fxml_strncmp(unsigned int n, const char* a, const char* b)
 {
 	int i;
 
@@ -524,12 +526,7 @@ fxml_element* fxml_parseTag(fxml_vFile* buffer, int len, int addType)
 	#endif
 	
 	parseLen = fxml_getLen(buffer, FXML_PARSE_ATTRIBUTE);
-	
-	if(parseLen > len){
-		fxml_fsetVal(element, buffer, len);
-	} else {	
-		fxml_fsetVal(element, buffer, parseLen);
-	}
+	fxml_fsetVal(element, buffer, FXML_MIN(len, parseLen));
 
 	#ifdef FXML_DEBUG
 	fxml_ePrint(FXML_MSG_DEBUG, "found the tag name: '%s' with length '%i'", element->val, parseLen);
@@ -580,7 +577,7 @@ fxml_element* fxml_parseTag(fxml_vFile* buffer, int len, int addType)
 			if((aValLen = fxml_getLen(buffer, FXML_PARSE_ATTRIBUTE_VAL)) != FXML_ERROR){
 				fxml_vfseek(buffer, 1, SEEK_CUR);
 				val = fxml_newElement(FXML_TYPE_ATTRIBUTE_VAL);
-				fxml_fsetVal(val, buffer, aValLen);
+				fxml_fsetValEntityDecode(val, buffer, aValLen);
 				fxml_addElementStruct(add, val);
 				/* printf("\tFound an attribute value: '%s'\n", val->val); */
 				fxml_vfseek(buffer, 1, SEEK_CUR);
@@ -709,7 +706,7 @@ void fxml_fparse(fxml_vFile* buffer, fxml_document* document, fxml_element* elem
 				/* printf("Identified text with length %d, inserting into element '%s'\n\n", len, element->val); */
 				
 				add = fxml_newElement(FXML_TYPE_TEXT);
-				fxml_fsetVal(add, buffer, len);
+				fxml_fsetValEntityDecode(add, buffer, len);
 				fxml_addOrKillElementStruct(document, element, add);
 
 				/* printf("\tvalue: '%s'\n", add->val); */

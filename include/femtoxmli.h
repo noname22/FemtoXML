@@ -31,6 +31,9 @@
 #define FXML_MAXATTRIBS 0xffff			/* Maximum number of attributes accompanying an element (ie. <tag attr="1" attr="2">) */
 #define FXML_MAX_MESSAGELEN 0xffffff		/* Maximum length of messages (error messages etc.) */
 
+#define FXML_MIN(__a, __b) ((__a) < (__b) ? (__a) : (__b))
+#define FXML_MAX(__a, __b) ((__a) > (__b) ? (__a) : (__b))
+
 /* Constants */
 #define FXML_ERROR -1
 
@@ -51,12 +54,16 @@ typedef struct{
 /* Helper functions */
 int fxml_strlen(const char* str);
 int fxml_contains(char* buffer, char needle, int len);
+int fxml_streq(const char* a, int alen, const char* b, int blen);
+int fxml_strncmp(unsigned int n, const char* a, const char* b);
 
 fxml_filePos fxml_getFilePos(fxml_vFile* file);
 int fxml_countElements(fxml_element* element, int type, int invert);
 fxml_element* fxml_getLastElement(fxml_element* element);
 
 int fxml_addOrKillElementStruct(fxml_document* doc, fxml_element* parent, fxml_element* element);
+
+void fxml_fsetValEntityDecode(fxml_element* element, fxml_vFile* buffer, int len);
 
 /* vFile, "virtual" file buffer */
 
