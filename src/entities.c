@@ -410,7 +410,7 @@ int fxml_decodeToString(fxml_vFile* f, char* buffer, int len)
 {
 	int i, bi = 0;
 	for(i = 0; i < len; i++){
-		char read = fxml_vfgetc(f);
+		int read = fxml_vfgetc(f);
 
 		if(read > 31 && read != '&'){
 			if(buffer){ buffer[bi] = read; }

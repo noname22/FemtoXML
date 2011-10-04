@@ -6,6 +6,7 @@ SET(SOURCE_FILES
         src/parse.c
         src/structure.c
         src/vfile.c
+        src/entities.c
 )
 
 SET(CPACK_PACKAGE_NAME femtoxml)

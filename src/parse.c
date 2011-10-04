@@ -577,7 +577,8 @@ fxml_element* fxml_parseTag(fxml_vFile* buffer, int len, int addType)
 			if((aValLen = fxml_getLen(buffer, FXML_PARSE_ATTRIBUTE_VAL)) != FXML_ERROR){
 				fxml_vfseek(buffer, 1, SEEK_CUR);
 				val = fxml_newElement(FXML_TYPE_ATTRIBUTE_VAL);
-				fxml_fsetValEntityDecode(val, buffer, aValLen);
+				/*fxml_fsetValEntityDecode(val, buffer, aValLen);*/
+				fxml_fsetVal(val, buffer, aValLen);
 				fxml_addElementStruct(add, val);
 				/* printf("\tFound an attribute value: '%s'\n", val->val); */
 				fxml_vfseek(buffer, 1, SEEK_CUR);
@@ -707,6 +708,7 @@ void fxml_fparse(fxml_vFile* buffer, fxml_document* document, fxml_element* elem
 				
 				add = fxml_newElement(FXML_TYPE_TEXT);
 				fxml_fsetValEntityDecode(add, buffer, len);
+				/*fxml_fsetVal(add, buffer, len);*/
 				fxml_addOrKillElementStruct(document, element, add);
 
 				/* printf("\tvalue: '%s'\n", add->val); */
