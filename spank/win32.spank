@@ -1,0 +1,10 @@
+compiler i586-mingw32msvc-gcc
+cflags std=c99 Os Iinclude
+targettype lib-static
+target femtoxml
+#postbuildscript i586-mingw32msvc-ranlib lib$(target).a
+
+inst_prefix /usr/local/i586-mingw32msvc
+
+inst_copy   include/femtoxml.h        $(inst_prefix)/include
+inst_copy   lib$(target).a            $(inst_prefix)/lib
