@@ -325,8 +325,8 @@ byte* fxml_encodeUtf8(int codepoint, byte* out)
 
 	/* start with the highest byte and fill it with bits */
 	for(i = 5; i >= 0; i--){
-		printf("%d atBit\n", atBit);
-		printf("%d %d %d %d\n", bits, atBit, bits - atBit, leftInZero);
+		/*printf("%d atBit\n", atBit);
+		printf("%d %d %d %d\n", bits, atBit, bits - atBit, leftInZero);*/
 
 		if(bits - atBit <= leftInZero){
 			/* We can fit this in byte zero, filler up! */
@@ -342,8 +342,8 @@ byte* fxml_encodeUtf8(int codepoint, byte* out)
 				out[i] |= ((codepoint >> atBit++) & 1) << j;
 			}
 
-			UR_HexDump("the char", (const void*)(out + i), strlen((const char*)(out + i)));
-			printf("%s\n", (char*)(out + i));
+			/*UR_HexDump("the char", (const void*)(out + i), strlen((const char*)(out + i)));
+			printf("%s\n", (char*)(out + i));*/
 			return out + i;
 		}
 
