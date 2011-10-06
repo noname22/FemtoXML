@@ -16,7 +16,6 @@ Status
 ======
 
 FemtoXML hasn't been extensively tested but I haven't had any problems with it. I did do some testing using the excellent fuzzer zzuf by Sam Hocevar which exposed at least one bug in the parser, but femtoxml never segfaulted. Please report any bugs you encounter.
-Documentation
 
 Installation
 ============
