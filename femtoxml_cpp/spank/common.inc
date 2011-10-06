@@ -2,7 +2,6 @@ name            FemtoXML_CPP
 version         0.97
 
 template        c++
-compiler        i586-mingw32msvc-g++
 cflags          Wall O3 Iinclude
 targettype      lib-static
 target          femtoxml_cpp
