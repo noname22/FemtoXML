@@ -1,0 +1,19 @@
+FemtoXML_CPP Change Log
+0.97 (14/08/2009)
+	* Updated Element to be more C++-ish (conversions to int, double and string)
+	* Cleaned up the overaloading some by adding default values for some methods (some API breakage)
+	* Added valueOf-method to Element, primarily to provide a shorthand for getting attribute values
+
+0.96 (01/05/2008)
+	* C++ wrapper is now a static library (which solves platform 
+	  compatibility issues with throwing exceptions in a shared 
+	  library and trying to catch them in an application)
+	* Corrected documentation (FemtoXML)
+
+0.95 (02/09/2008)
+	* Added support for loading from a string
+	* Major parsing performance increase (FemtoXML)
+	* Fixed parsing bugs (FemtoXML)
+
+0.9 (02/08/2008)
+	* Initial public release

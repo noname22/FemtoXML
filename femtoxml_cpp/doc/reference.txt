@@ -1,0 +1,216 @@
+FemtoXML_CPP 0.97
+
+1. About
+	1.1 License
+	1.2 Authors
+
+2 Compiling and linking
+	2.1 Building the library
+	2.2 Linking with the library
+
+3. Class Reference
+
+4. Examples
+
+1. About
+
+FemtoXML_CPP is a C++ wrapper for FemtoXML, a small XML parser library written in C. See the FemtoXML documentation and/or website for more information.
+
+For the latest version of FemtoXML_CPP check its website at http://nurd.se/~noname/femtoxml/
+
+1.1 License
+
+Gnu Public License v. 3, see license.txt for more details.
+
+1.2 Authors
+
+Fredrik Hultin
+email: noname@ the same domain as the website
+
+2. Compiling and linking
+
+To build the project you could either build it as a library using the provided cmake project file, or embed FemtoXML and FemtoXML_CPP into your project. FemtoXML_CPP has no external dependencies part from the standard c++ library and FemtoXML.
+
+2.1 Building the library
+
+First of all, make sure that you have femtoxml installed (the c-library femtoxml_cpp wraps). Get it from the website specified in the about section.
+
+To compile the library using the provided cmake project file, create a directory anywhere on your system where you want to build femtoxml, e.g. /tmp/build. 
+
+	mkdir /tmp/build
+	cd /tmp/build
+
+Run cmake with the path you downloaded and extracted femtoxml_cpp to.
+
+	cmake ~/downloads/femtoxml_cpp-xx
+
+Then run make while still in the temporary build directory you created. 
+
+	make
+
+Once the compilation finishes (which it will in about 2 seconds if your system isn't painfully slow), run make install as root to install the library.
+
+	sudo make install
+
+2.2 Linking with the library
+
+To link FemtoXML_CPP with your project you can use the pkg-config files cmake should have installed on your system. To get the needed cflags and ldflags use
+
+	pkg-config --cflags femtoxml_cpp
+	pkg-config --libs femtoxml_cpp
+
+As an example, if you have a file called myxmlparser.cpp, you can compile and link that with g++ and femtoxml_cpp using the command
+
+	g++ `pkg-config --cflags femtoxml` `pkg-config --libs femtoxml` myxmlparser.cpp -o myxmlparser
+
+3. Class Reference
+
+See the FemtoXML function reference for more information regarding any FemtoXML functionality FemtoXML_CPP wraps.
+
+3.1 Document
+
+The class Document logically wraps the type fxml_document from the C-library. It is responsible for loading and saving XML documents. It resides in the FemtoXML namespace.
+
+---------------------------------------------------
+bool Document::load(std::string fileName)
+---------------------------------------------------
+Loads the specified XML document.
+
+fileName	Name of the file to load.
+Returns		true if the load succeeds, false otherwise.
+
+---------------------------------------------------
+bool Document::loadBuffer(std::string xml)
+---------------------------------------------------
+Parses a string.
+
+xml		A string containing XML data.
+Returns		true if the load succeeds, false otherwise.
+
+---------------------------------------------------
+bool Document::save(std::string fileName)
+---------------------------------------------------
+Saves the current document to the specified file.
+
+fileName	Name of the file to save to.
+Returns		true if the save succeeds, false otherwise.
+
+---------------------------------------------------
+Element Document::root()
+---------------------------------------------------
+Returns 	the root element of the document
+                       
+
+---------------------------------------------------
+void Document::print()
+---------------------------------------------------
+Prints out the entire document as XML to the message handler (stdout by default).
+
+3.2 Settings
+
+The Settings class has a few static data members used for settings for the library. It resides in the FemtoXML namespace.
+
+---------------------------------------------------
+static bool Settings::exceptions
+---------------------------------------------------
+Use exceptions (default and recommended on)
+
+---------------------------------------------------
+static fxml_callback_fn Settings::messageCallback
+---------------------------------------------------
+Pointer to custom message callback to redirect error messages from stdout.
+
+---------------------------------------------------
+static void* SettingscallbackData
+---------------------------------------------------
+Data to accompany the message callback.
+
+
+
+
+3.3 Element
+
+Element logically wraps the type fxml_element from the C-library. It resides in the FemtoXML namespace.
+
+---------------------------------------------------
+Element::Element(fxml_element* in)
+---------------------------------------------------
+Constructor for creating an Element from a FemtoXML C-lib element (used internally).
+
+in		A FemtoXML C-lib element
+
+---------------------------------------------------
+Element::print()
+---------------------------------------------------
+Prints the element (and it's sub-elements) to the message handler using printSimple() from the C-library
+
+
+---------------------------------------------------
+int Element::count(int type)
+int Element::count(std::string value, int type = FXML_TYPE_ANY)
+---------------------------------------------------
+Count sub-elements by value and/or type.
+
+type		A type the element must have to get counted. See FemtoXML reference, section 3.1 for more info.
+value		A value the element must have to get counted.
+Returns		The number of sub-elements meeting the criteria.
+
+---------------------------------------------------
+Element Element::get(int index = 0)
+Element Element::get(std::string value, int index = 0)
+Element Element::get(int type, int index)
+Element Element::get(int type, std::string value, int index = 0)
+---------------------------------------------------
+Get sub-element by index and/or value and/or value.
+
+<pannkaka><zero/><one/><two/></pannkaka>
+
+zero has index 0 in pannkaka, one has 1, etc.
+zero has value "zero", one has value "one", etc.
+
+type		A type the element must have to get counted. See FemtoXML reference, section 3.1 for more info.
+value		A value the element must have to be included in the index / be returned.
+index		Return the element with this index.
+Returns 	The element meeting the criteria.
+
+---------------------------------------------------
+Element Element::addElement(std::string name)
+Element Element::addText(std::string text)
+Element Element::addDeclaration(std::string name)
+Element Element::addComment(std::string comment)
+Element Element::addDoctype(std::string text)
+Element Element::addAttribute(std::string attribute)
+Element Element::addAttribute(std::string attribute, std::string value)
+---------------------------------------------------
+Adds an element of the specified type.
+
+See FemtoXML reference for more info.
+
+name		Name of the element.
+text		Text to add
+comment		Comment to add
+attribute	Attribute to add
+value		Value to assign the attribute
+Returns		The new element.
+
+---------------------------------------------------
+Element valueOf(std::string eValue, int index = 0, int type = FXML_TYPE_ANY)
+---------------------------------------------------
+Returns the first child of a given element (like the value of an attribute)
+
+type		A type the element must have to get counted. See FemtoXML reference, section 3.1 for more info.
+value		A value the element must have to be included in the index / be returned.
+index		Return the element with this index.
+Returns 	The element meeting the criteria.
+
+---------------------------------------------------
+std::string Element::value()
+double Element::asFloat()
+int Element::asInt()
+---------------------------------------------------
+Returns		The value of the element.
+
+4. Examples
+
+See the examples-directory in the FemtoXML_CPP project root.
+

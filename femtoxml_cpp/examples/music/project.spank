@@ -1,0 +1,10 @@
+# This is a project file for the spank build system, see http://nurd.se/~noname/spank for more information
+# There is also a normal makefile in this directory if you don't like/use spank (just type "make").
+template	c++
+target		music
+cflags		ggdb I../../include ansi pedantic Wall
+lib		femtoxml_cpp
+
+#sourcedir	../../src .
+#lib		femtoxml
+

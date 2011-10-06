@@ -1,0 +1,13 @@
+# femtoxml pkg-config file
+
+prefix=${pcfiledir}/../..
+libdir=${prefix}/lib
+includedir=${prefix}/include/femtoxml_cpp
+
+Name: FemtoXML_CPP
+Description: FemtoXML_CPP is a C++ wrapper for the FemtoXML library
+Version: 0.1.0
+Requires: femtoxml
+Conflicts:
+Libs: -L${libdir} -lfemtoxml_cpp
+Cflags: -I${includedir}
