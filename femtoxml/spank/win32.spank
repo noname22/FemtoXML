@@ -1,3 +1,4 @@
 include        spank/common.inc
 compiler       i586-mingw32msvc-gcc
+ar             i586-mingw32msvc-ar
 inst_prefix    /usr/local/i586-mingw32msvc/

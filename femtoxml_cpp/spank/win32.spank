@@ -1,5 +1,6 @@
 include          spank/common.inc
 inst_prefix      /usr/local/i586-mingw32msvc/
 compiler         i586-mingw32msvc-g++
+ar               i586-mingw32msvc-ar
 cflags           I$(inst_prefix)/include/femtoxml
 lib              femtoxml
